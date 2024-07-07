@@ -7,6 +7,7 @@ import { OrganizationSwitcher } from "@clerk/nextjs"
 import { Button } from "@/components/ui/button"
 import { LayoutDashboard, Star } from "lucide-react"
 import { useSearchParams } from "next/navigation"
+import { cn } from "@/lib/utils"
 
 const font = Poppins({
   subsets: ['latin'],
@@ -29,9 +30,12 @@ const OrgSidebar: React.FC<OrgSidebarProps> = ({}) => {
           <Image 
             src={'/logo.svg'}
             alt="logo"
-            height={120}
-            width={120}
+            height={30}
+            width={30}
           />
+          <p className={cn("font-bold", font.className)}>
+            White wave
+          </p>
         </div>
       </Link>
 
