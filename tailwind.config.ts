@@ -19,6 +19,15 @@ const config = {
     },
     extend: {
       colors: {
+        brand: {
+          blue: "#4A90E2",
+          green: "#7FDBB6",
+          white: "#F5F5F5",
+          navy: "#002D72",
+          beige: "#D5C6B2",
+          coral: "#FF6F61",
+          gray: "#D9E1E8"
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
