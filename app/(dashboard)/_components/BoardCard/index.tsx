@@ -1,8 +1,9 @@
 'use client'
 
+import Actions from "@/components/Actions"
 import { useAuth } from "@clerk/nextjs"
 import { formatDistanceToNow } from "date-fns"
-import { Star } from "lucide-react"
+import { MoreHorizontal, Star } from "lucide-react"
 import Link from "next/link"
 
 interface BoardCardProps {
@@ -38,21 +39,28 @@ const BoardCard: React.FC<BoardCardProps> = ({ id, orgId, title, authorId, autho
 
           <div className="relative pl-3 pt-2">
             <p className="text-lg">
-              { title.length > 17 ? 
-                `${ title.slice(0, 17) }...` :
+              { title.length > 13 ? 
+                `${ title.slice(0, 13) }...` :
                 title
               }
             </p>
-            <p className="text-xs text-muted-foreground">
-              { author }, { formatDistanceToNow(createdAt, { addSuffix: true }) }
-            </p>
+            <div className="opacity-0 group-hover:opacity-100 transition-all">
+              <p className="text-xs text-muted-foreground">
+                { author }, { formatDistanceToNow(createdAt, { addSuffix: true }) }
+              </p>
+              <button onClick={() => {}} className="absolute right-3 top-3">
+                { isFavorite ?
+                  <Star className="w-4 h-4 text-brand-blue fill-brand-blue hover:fill-brand-blue/30 transition-all" /> :
+                  <Star className="w-4 h-4 hover:text-brand-blue transition-all" />
+                }
+              </button>
+            </div>
           </div>
-          <button onClick={() => {}} className="absolute top-5 right-5">
-            { isFavorite ?
-              <Star className="text-brand-blue fill-brand-blue hover:fill-brand-blue/30 transition-all" /> :
-              <Star className="hover:text-brand-blue transition-all" />
-            }
-          </button>
+          <Actions title={ title } id={ id } color={ color } side="right" sideOffset={15} >
+            <button className="absolute top-3 right-3 p-3 outline-none">
+              <MoreHorizontal className="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" />
+            </button>
+          </Actions>
         </div>
       </div>
     </Link>
