@@ -16,7 +16,7 @@ const page: React.FC<pageProps> = ({ searchParams }) => {
   const { organization } = useOrganization()
 
   return (
-    <main className="flex-1 h-[calc(100%-80px)] p-6">
+    <main className="flex-1 h-[calc(100%-80px)] max-w-[calc(100%-20px)] p-6 overflow-x-hidden">
       { !organization ? 
         <EmptyOrg />
         :
