@@ -7,7 +7,7 @@ interface InviteButtonProps {
   
 }
 
-const InviteButton: React.FC<InviteButtonProps> = ({}) => {
+const EditButton: React.FC<InviteButtonProps> = ({}) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -23,4 +23,4 @@ const InviteButton: React.FC<InviteButtonProps> = ({}) => {
   )
 }
 
-export default InviteButton
+export default EditButton

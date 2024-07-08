@@ -2,7 +2,7 @@
 
 import { OrganizationSwitcher, UserButton, useOrganization } from "@clerk/nextjs"
 import SearchInput from "./SearchInput"
-import InviteButton from "./EditButton"
+import EditButton from "./EditButton"
 
 interface NavbarProps {
   
@@ -42,7 +42,7 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
         />
       </div>
       { organization && (
-        <InviteButton />
+        <EditButton />
       )}
       <UserButton />
     </main>

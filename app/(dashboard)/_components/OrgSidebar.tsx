@@ -24,7 +24,7 @@ const OrgSidebar: React.FC<OrgSidebarProps> = ({}) => {
   const favorites = searchParams.get('favorites')
 
   return (
-    <main className="hidden lg:flex flex-col space-y-6 w-[206px] pl-5 pt-5">
+    <main className="hidden lg:flex flex-col space-y-6 w-[206px] pl-5 pt-5 border-r pr-5">
       <Link href={'/'}>
         <div className="flex items-center gap-x-2">
           <Image 

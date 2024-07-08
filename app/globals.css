@@ -7,6 +7,10 @@ html, body, :root {
   width: 100vw;
 }
 
+.animate-gradient {
+  background-size: 300%;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
