@@ -3,7 +3,6 @@ import EmptyBoards from "./EmptyBoards"
 import EmptyFavorites from "./EmptyFavorites"
 import EmptySearch from "./EmptySearch"
 import { api } from "@/convex/_generated/api"
-import Loading from "@/components/auth/Loading"
 import BoardCard from "./BoardCard"
 import CreateBoardDialog from "./CreateBoardDialog"
 import { Plus } from "lucide-react"
@@ -18,7 +17,7 @@ interface BoardListProps {
 
 const BoardList: React.FC<BoardListProps> = ({ organizationId, query }) => {
 
-  const data = useQuery(api.boards.get, { orgId: organizationId })
+  const data = useQuery(api.boards.get, { orgId: organizationId, ...query })
 
   if(data === undefined) {
     return (
@@ -55,12 +54,14 @@ const BoardList: React.FC<BoardListProps> = ({ organizationId, query }) => {
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-5 mt-8 pb-10">
 
+        { (!query.search && !query.favorites) &&
+          <CreateBoardDialog>
+            <button className="aspect-[100/127] border rounded-lg flex justify-center items-center overflow-hidden hover:scale-105 transition-all bg-brand-blue">
+              <Plus className="text-brand-white" width={30} height={30} />
+            </button>
+          </CreateBoardDialog>
+        }
         
-        <CreateBoardDialog>
-          <button className="aspect-[100/127] border rounded-lg flex justify-center items-center overflow-hidden hover:scale-105 transition-all bg-brand-blue">
-            <Plus className="text-brand-white" width={30} height={30} />
-          </button>
-        </CreateBoardDialog>
 
         { data.map(board => {
           return (

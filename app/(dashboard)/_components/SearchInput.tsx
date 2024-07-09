@@ -16,7 +16,7 @@ interface SearchInputProps {
   
 }
 
-const SearchInput: React.FC<SearchInputProps> = ({}) => {
+const SearchInput: React.FC<SearchInputProps> = ({ }) => {
 
   const router = useRouter()
   const [value, setValue] = useState("")
