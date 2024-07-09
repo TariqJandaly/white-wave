@@ -83,7 +83,7 @@ const CreateBoardDialog: React.FC<NewBoardProps> = ({ children }) => {
     })
       .then((id) => {
         toast.success('Board created')
-        router.push(`/boards/${id}`)
+        router.push(`/board/${id}`)
       })
       .catch((error) => {
         toast.error("Failed to create board")
