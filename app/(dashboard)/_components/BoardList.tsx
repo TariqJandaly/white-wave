@@ -23,7 +23,7 @@ const BoardList: React.FC<BoardListProps> = ({ organizationId, query }) => {
   if(data === undefined) {
     return (
       <div className="h-full flex flex-col items-center justify-center">
-        <h1 className="text-2xl font-semibold mt-6">
+        <h1 className="text-2xl font-semibold mt-6 animate-pulse">
           Loading...
         </h1>
       </div>

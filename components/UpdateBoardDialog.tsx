@@ -72,9 +72,6 @@ const UpdateBoardDialog: React.FC<UpdateBoardProps> = ({ isOpen, id, _title, _co
 
   const onClick = () => {
 
-    setTitle('')
-    setColor(colors[0].hex)
-
     if(!organization) return
 
     mutate({
