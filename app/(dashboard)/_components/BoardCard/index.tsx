@@ -1,10 +1,13 @@
 'use client'
 
 import Actions from "@/components/Actions"
+import { api } from "@/convex/_generated/api"
+import { useApiMutation } from "@/hooks/useApiMutation"
 import { useAuth } from "@clerk/nextjs"
 import { formatDistanceToNow } from "date-fns"
 import { MoreHorizontal, Star } from "lucide-react"
 import Link from "next/link"
+import { toast } from "sonner"
 
 interface BoardCardProps {
   id: string
@@ -20,10 +23,28 @@ interface BoardCardProps {
 const BoardCard: React.FC<BoardCardProps> = ({ id, orgId, title, authorId, authorName, color, isFavorite, createdAt }) => {
 
   const { userId } = useAuth()
+  const { mutate: mutateFavorite, pending: pendingFavorite } = useApiMutation(api.board.favorite)
+  const { mutate: mutateUnfavorite, pending: pendingUnfavorite } = useApiMutation(api.board.unfavorite)
 
   const author = userId === authorId ? "You" : authorName
 
-  const changeFav = () => {
+  const changeFav = (setTo: boolean, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+
+    event.stopPropagation()
+    event.preventDefault()
+
+    if(!setTo) {
+      mutateUnfavorite({
+        id
+      })
+      .catch(() => toast.error("Failed to unfavorite"))
+    } else {
+      mutateFavorite({
+        id,
+        orgId
+      })
+      .catch(() => toast.error("Failed to favorite"))
+    }
 
   }
 
@@ -48,9 +69,9 @@ const BoardCard: React.FC<BoardCardProps> = ({ id, orgId, title, authorId, autho
               <p className="text-xs text-muted-foreground">
                 { author }, { formatDistanceToNow(createdAt, { addSuffix: true }) }
               </p>
-              <button onClick={() => {}} className="absolute right-3 top-3">
+              <button onClick={(e) => changeFav(!isFavorite, e)} className="absolute right-3 top-3">
                 { isFavorite ?
-                  <Star className="w-4 h-4 text-brand-blue fill-brand-blue hover:fill-brand-blue/30 transition-all" /> :
+                  <Star className="w-4 h-4 text-brand-blue fill-brand-blue transition-all" /> :
                   <Star className="w-4 h-4 hover:text-brand-blue transition-all" />
                 }
               </button>

@@ -92,7 +92,7 @@ const UpdateBoardDialog: React.FC<UpdateBoardProps> = ({ isOpen, id, _title, _co
       <DialogContent>
         <div className="flex flex-col gap-3">
           <label className="text-lg" htmlFor="input">Title</label>
-          <Input value={title} id="input" onChange={e => setTitle(e.target.value)} />
+          <Input autoComplete={'off'} value={title} id="input" onChange={e => setTitle(e.target.value)} />
         </div>
         <p className="text-lg">
           Color
