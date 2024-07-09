@@ -8,6 +8,7 @@ import { api } from "@/convex/_generated/api"
 import { useApiMutation } from "@/hooks/useApiMutation"
 import { cn } from "@/lib/utils"
 import { useOrganization } from "@clerk/nextjs"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { toast } from "sonner"
 
@@ -66,6 +67,8 @@ const CreateBoardDialog: React.FC<NewBoardProps> = ({ children }) => {
   const { organization } = useOrganization()
   const { mutate, pending } = useApiMutation(api.board.create)
 
+  const router = useRouter()
+
   const onClick = () => {
 
     setTitle('')
@@ -80,7 +83,7 @@ const CreateBoardDialog: React.FC<NewBoardProps> = ({ children }) => {
     })
       .then((id) => {
         toast.success('Board created')
-        // TODO: redirect the user to board/{id}
+        router.push(`/boards/${id}`)
       })
       .catch((error) => {
         toast.error("Failed to create board")
