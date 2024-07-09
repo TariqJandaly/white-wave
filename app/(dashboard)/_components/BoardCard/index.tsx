@@ -51,7 +51,7 @@ const BoardCard: React.FC<BoardCardProps> = ({ id, orgId, title, authorId, autho
 
   return (
     <Link
-      href={`/boards/${id}`}
+      href={`/board/${id}`}
       className="group"
     >
       <div className="aspect-[100/127] border rounded-lg flex flex-col justify-between overflow-hidden hover:scale-105 transition-all">

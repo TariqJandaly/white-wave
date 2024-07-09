@@ -1,4 +1,6 @@
+import Room from "@/components/Room"
 import Canvas from "./_components/Canvas"
+import Loading from "@/components/auth/Loading"
 
 interface pageProps {
   params: {
@@ -8,7 +10,9 @@ interface pageProps {
 
 const page: React.FC<pageProps> = ({ params }) => {
   return (
-    <Canvas boardId={params.id} />
+    <Room roomId={ params.id } fallback={<Loading />}>
+      <Canvas boardId={params.id} />
+    </Room>
   )
 }
 
