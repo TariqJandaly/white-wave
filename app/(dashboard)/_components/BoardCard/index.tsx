@@ -3,6 +3,7 @@
 import Actions from "@/components/Actions"
 import { api } from "@/convex/_generated/api"
 import { useApiMutation } from "@/hooks/useApiMutation"
+import { cn } from "@/lib/utils"
 import { useAuth } from "@clerk/nextjs"
 import { formatDistanceToNow } from "date-fns"
 import { MoreHorizontal, Star } from "lucide-react"
@@ -65,11 +66,14 @@ const BoardCard: React.FC<BoardCardProps> = ({ id, orgId, title, authorId, autho
                 title
               }
             </p>
-            <div className="opacity-0 group-hover:opacity-100 transition-all">
-              <p className="text-xs text-muted-foreground">
+            <div className="transition-all">
+              <p className="opacity-0 group-hover:opacity-100 text-xs text-muted-foreground">
                 { author }, { formatDistanceToNow(createdAt, { addSuffix: true }) }
               </p>
-              <button onClick={(e) => changeFav(!isFavorite, e)} className="absolute right-3 top-3">
+              <button onClick={(e) => changeFav(!isFavorite, e)} className={cn(
+                "opacity-0 group-hover:opacity-100 absolute right-3 top-3",
+                isFavorite && 'opacity-100'
+              )}>
                 { isFavorite ?
                   <Star className="w-4 h-4 text-brand-blue fill-brand-blue transition-all" /> :
                   <Star className="w-4 h-4 hover:text-brand-blue transition-all" />
