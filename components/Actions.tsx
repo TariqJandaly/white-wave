@@ -10,6 +10,7 @@ import UpdateBoardDialog from "./UpdateBoardDialog"
 import { useState } from "react"
 import { Dialog, DialogContent } from "./ui/dialog"
 import { Button } from "./ui/button"
+import { useRouter } from "next/navigation"
 
 interface ActionsProps {
   children: React.ReactNode
@@ -25,6 +26,8 @@ const Actions: React.FC<ActionsProps> = ({ children, side, sideOffset, id, title
 
   const [isEditOpen, setIsEditOpen] = useState(false)
   const [isDeleteOpen, setIsDeleteOpen] = useState(false)
+
+  const router = useRouter()
 
   const { mutate, pending } = useApiMutation(api.board.remove)
 
@@ -44,6 +47,8 @@ const Actions: React.FC<ActionsProps> = ({ children, side, sideOffset, id, title
 
     .then(() => {
       toast.message("Deleted successfully")
+      router.push('/')
+      
     })
     .catch(() => {
       toast.error("Faild to delete the board")

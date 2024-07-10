@@ -1,12 +1,13 @@
 'use client'
 
+import Actions from "@/components/Actions"
 import { Button } from "@/components/ui/button"
 import UpdateBoardDialog from "@/components/UpdateBoardDialog"
 import { api } from "@/convex/_generated/api"
 import { Id } from "@/convex/_generated/dataModel"
 import { useApiMutation } from "@/hooks/useApiMutation"
 import { useQuery } from "convex/react"
-import { Home, Pencil } from "lucide-react"
+import { Home, Menu, Pencil } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
@@ -24,7 +25,7 @@ const Info: React.FC<InfoProps> = ({ boardId }) => {
     id: boardId as Id<"boards">
   })
 
-  
+  if(!data) return <></>
 
   return (
     <main className="absolute top-2 left-2 bg-white rounded-md px-5 h-12 flex items-center gap-5 shadow-md">
@@ -45,15 +46,11 @@ const Info: React.FC<InfoProps> = ({ boardId }) => {
       <div className="w-4 h-4 rounded-full border-2 border-black/20" style={{
         backgroundColor: data?.color
       }} />
-      { data &&
-        <>
-          <Button onClick={() => setIsEditBoardOpen(true)} className="flex items-center gap-2 hover:bg-transparent" variant={'ghost'}>
-            <Pencil size={20} />
-            Edit board
-          </Button>
-          <UpdateBoardDialog isOpen={isEditBoardOpen} setIsOpen={setIsEditBoardOpen} id={ data?._id! } _color={ data?.color! } _title={ data?.title! } />
-        </>
-      }
+      <Actions id={data._id} title={data.title} color={data.color}>
+        <button className="flex justify-center items-center">
+          <Menu size={20} />
+        </button>
+      </Actions>
     </main>
   )
 }
