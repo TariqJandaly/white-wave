@@ -14,7 +14,7 @@ interface RoomProps {
 const Room: React.FC<RoomProps> = ({ children, roomId, fallback }) => {
   return (
     <RoomProvider id={roomId} initialPresence={{
-
+      cursor: null
     }}>
       <ClientSideSuspense fallback={fallback} >
         { children }

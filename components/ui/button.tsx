@@ -18,6 +18,8 @@ const buttonVariants = cva(
           "bg-brand-gray text-brand-gray-foreground hover:bg-brand-gray/80",
         ghost: "hover:bg-brand-gray hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        board: 'hover:bg-blue-500/20 hover:text-blue-800',
+        boardActive: 'bg-blue-500/20 text-blue-800'
       },
       size: {
         default: "h-10 px-4 py-2",
