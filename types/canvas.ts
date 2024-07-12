@@ -22,7 +22,7 @@ export type RectangleLayer = {
   x: number
   y: number
   height: number
-  width: null
+  width: number
   fill: Color
   value?: string
 }
@@ -32,7 +32,7 @@ export type EllipseLayer = {
   x: number
   y: number
   height: number
-  width: null
+  width: number
   fill: Color
   value?: string
 }
@@ -42,7 +42,7 @@ export type PathLayer = {
   x: number
   y: number
   height: number
-  width: null
+  width: number
   fill: Color
   points: number[][]
   value?: string
@@ -53,7 +53,7 @@ export type TextLayer = {
   x: number
   y: number
   height: number
-  width: null
+  width: number
   fill: Color
   value?: string
 }
@@ -63,7 +63,7 @@ export type NoteLayer = {
   x: number
   y: number
   height: number
-  width: null
+  width: number
   fill: Color
   value?: string
 }
@@ -120,3 +120,5 @@ export enum CanvasMode {
   Resizing,
   Pencil
 }
+
+export type Layer = RectangleLayer | EllipseLayer | PathLayer | TextLayer | NoteLayer
