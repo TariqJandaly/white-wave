@@ -1,1 +1,1 @@
-A free to use whiteboard app for teams & friends to use!
+A free to use whiteboard app for organizations & friends to use!
