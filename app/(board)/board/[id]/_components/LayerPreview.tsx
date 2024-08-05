@@ -29,7 +29,7 @@ const LayerPreview = memo(({ id, onLayerPointerDown, selectionColor }: LayerPrev
       )
 
     default:
-      console.warn('Unknown layer type')
+      // console.warn('Unknown layer type')
       return null
   }
 })

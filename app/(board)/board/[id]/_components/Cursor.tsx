@@ -3,7 +3,7 @@
 import { memo } from 'react'
 import { MousePointer2 } from 'lucide-react'
 
-import { getRandomColorFromId } from '@/lib/utils'
+import { getColorFromId } from '@/lib/utils'
 import { useOther } from '@/liveblocks.config'
 
 interface CursorProps {
@@ -37,13 +37,13 @@ const Cursor = memo(({ id }: CursorProps) => {
       <MousePointer2
         className='h-5 w-5'
         style={{
-          fill: getRandomColorFromId(id),
-          color: getRandomColorFromId(id)
+          fill: getColorFromId(id),
+          color: getColorFromId(id)
         }}
       />
       <div className='absolute select-none left-5 px-1.5 py-0.5 rounded-md text-xs text-white font-semibold'
         style={{
-          backgroundColor: getRandomColorFromId(id)
+          backgroundColor: getColorFromId(id)
         }}
       >
         { name }

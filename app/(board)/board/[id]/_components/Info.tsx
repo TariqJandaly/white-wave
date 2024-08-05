@@ -28,7 +28,7 @@ const Info: React.FC<InfoProps> = ({ boardId }) => {
   if(!data) return <></>
 
   return (
-    <main className="absolute top-2 left-2 bg-white rounded-md px-5 h-12 flex items-center gap-5 shadow-md">
+    <main className="select-none absolute top-2 left-2 bg-white rounded-md px-5 h-12 flex items-center gap-5 shadow-md">
       <div className="flex justify-between items-center">
         <Link href='/'>
           <Image
